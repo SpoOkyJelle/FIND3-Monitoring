@@ -28,21 +28,29 @@ def convert_size(size_bytes):
 
 @app.route("/")
 def home():
-  conn = mysql.connect()
-  cursor = conn.cursor()
-
-  cursor.execute("SELECT * FROM `raspberries`")
-  data = cursor.fetchall()
+  try: 
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM `raspberries`")
+    data = cursor.fetchall()
+  except:
+    print('error with database')
+    data='error with database'    
+  
   
   return render_template('dashboard.html', data=data)
 
 @app.route("/database")
 def database():
-  conn = mysql.connect()  
-  cursor = conn.cursor()
+  try:
+    conn = mysql.connect()  
+    cursor = conn.cursor()
 
-  cursor.execute("SELECT * FROM `raspberries`")
-  data = cursor.fetchall()
+    cursor.execute("SELECT * FROM `raspberries`")
+    data = cursor.fetchall()
+  except:
+    print('error with database')
+    data='error with database'
   
   return render_template('database.html', data=data)
 
