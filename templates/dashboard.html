@@ -37,7 +37,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon/favicon-16x16.png">
     <link rel="manifest" href="../../assets/img/favicon/site.webmanifest">
-    <link rel="mask-icon" href="../../assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
@@ -61,8 +60,6 @@
 
     <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-md-none">
         <a class="navbar-brand mr-lg-5" href="../../index.html">
-            <img class="navbar-brand-dark" src="../../assets/img/brand/light.svg" alt="Volt logo" /> <img
-                class="navbar-brand-light" src="../../assets/img/brand/dark.svg" alt="Volt logo" />
         </a>
         <div class="d-flex align-items-center">
             <button class="navbar-toggler d-md-none collapsed" type="button" data-toggle="collapse"
@@ -140,28 +137,7 @@
     <main class="content">
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
-            <div class="btn-toolbar dropdown">
-                <!-- <button class="btn btn-primary btn-sm mr-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    <span class="fas fa-plus mr-2"></span>New Task
-                </button>
-                <div class="dropdown-menu dashboard-dropdown dropdown-menu-left mt-2">
-                    <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-tasks"></span>New Task</a>
-                    <a class="dropdown-item font-weight-bold" href="#"><span
-                            class="fas fa-cloud-upload-alt"></span>Upload Files</a>
-                    <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-user-shield"></span>Preview
-                        Security</a>
-                    <div role="separator" class="dropdown-divider"></div>
-                    <a class="dropdown-item font-weight-bold" href="#"><span
-                            class="fas fa-rocket text-danger"></span>Upgrade to Pro</a>
-                </div> -->
-            </div>
-            <div class="btn-group">
-                <!-- <button type="button" class="btn btn-sm btn-outline-primary">Share</button>
-                <button type="button" class="btn btn-sm btn-outline-primary">Export</button> -->
-            </div>
         </div>
-
 
         <div class="row justify-content-md-center">
             <div class="col-md-12 mb-4">
@@ -170,17 +146,18 @@
                         <div class="row d-block d-xl-flex align-items-center">
 
                             <div class="col-md-8">
-                                <canvas id="canvas" width="405" height="391" style="background: url('static/img/p8-gebouw-bewerkt.png') no-repeat; width: 405px; height: 391px;">
+                                <canvas id="canvas" width="405" height="391" style="background: url('static/img/oil-heatmap.png') no-repeat; background-size: cover; width: 405px; height: 391px;">
                                     Your browser does not support the canvas element.
                                 </canvas>
                             </div>
                             
                             <div class="col-md-4">
                                 <div class="location-counts">
-                                    <p>OIL - 1 : <span id="loc-1"></span> gebruikers</p>
-                                    <p>OIL - 2 : <span id="loc-2"></span> gebruikers</p>
-                                    <p>OIL - 3 : <span id="loc-3"></span> gebruikers</p>
-                                    <p>OIL - 4 : <span id="loc-4"></span> gebruikers</p>
+                                    <p>Workspace    - 1 : <span id="loc-1"></span> gebruikers</p>
+                                    <p>Workspace    - 2 : <span id="loc-2"></span> gebruikers</p>
+                                    <p>Workspace    - 3 : <span id="loc-3"></span> gebruikers</p>
+                                    <p>Workspace    - 4 : <span id="loc-4"></span> gebruikers</p>
+                                    <p>Meeting room - 5 : <span id="loc-5"></span> gebruikers</p>
                                 </div>
                             </div>
 
@@ -199,10 +176,6 @@
                                 class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
                                 <div class="icon icon-shape icon-md icon-shape-blue rounded mr-4 mr-sm-0"><span
                                         class="fas fa-satellite-dish"></span></div>
-                                <!-- <div class="d-sm-none">
-                                    <h2 class="h5">{{ item[1] }}</h2>
-                                    <h3 class="mb-1">{{ item[2] }} - {{ item[3] }}</h3>
-                                </div> -->
                             </div>
                             <div class="col-12 col-xl-7 px-xl-0">
                                 <div class="d-none d-sm-block">
@@ -210,10 +183,6 @@
                                     <h3 class="mb-1">{{ item[2] }}</h3>
                                 </div>
                                 <small>{{ item[3] }}GB - {{ item[4] }}</small>
-                                <!-- <div class="small mt-2">
-                                    <span class="fas fa-angle-up text-success"></span>
-                                    <span class="text-success font-weight-bold">18.2%</span> Since last month
-                                </div> -->
                             </div>
                         </div>
                     </div>
