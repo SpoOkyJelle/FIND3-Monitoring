@@ -35,6 +35,11 @@ python3 -m venv FIND3-Monitoring
 source FIND3-Monitoring/bin/activate
 ```
 
+Install the requirements.
+```bash
+pip install -r requirements.txt 
+```
+
 After that we need to install install the dependencies to run the application.
 
 ```bash
