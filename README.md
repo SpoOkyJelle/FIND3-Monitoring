@@ -5,11 +5,11 @@ Make sure you have pip and python installed, and a database server with the SQL 
 
 First download the project and extract it where you want it.
 Then open a terminal.
+To install the dependecies.
 
 ```bash
 pip install -r requirements.txt 
 ```
-To install the dependecies.
 
 ```bash
 python app.py
