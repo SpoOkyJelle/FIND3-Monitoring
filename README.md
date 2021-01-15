@@ -42,6 +42,23 @@ pip install wheel
 pip install gunicorn flask
 ```
 
+
+Before we can run the app we need to tell the flask app that it can allow a connection from anywhere.
+```bash
+sudo nano app.py
+```
+
+Change the following code from:
+```python
+if __name__ == "__main__":
+  app.run(debug=True)
+```
+To this:
+```python
+if __name__ == "__main__":
+  app.run(host='0.0.0.0')
+```
+
 Then we will allow the port 5000 and run the app.
 
 ```bash
