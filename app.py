@@ -3,6 +3,7 @@ from flaskext.mysql import MySQL
 
 import socket, math
 import psutil
+import json
 
 app = Flask(__name__)
 
@@ -64,6 +65,21 @@ def settings():
   network_stats = psutil.net_io_counters(pernic=True)['Ethernet']
   bytes_sent = getattr(network_stats, 'bytes_sent')
   bytes_recv = getattr(network_stats, 'bytes_recv')
+  
+  
+@app.route("/heatmapapi")
+def api():
+  conn = mysql.connect()  
+  cursor = conn.cursor()
+
+  cursor.execute("SELECT * FROM `heatmap` ORDER BY `id` DESC")
+  data = cursor.fetchall()
+
+  api = data
+
+  x = '{ "id": "' + str(api[0][0]) + '", "x_coord": "' + str(api[0][1]) + '",  "y_coord": "' + str(api[0][2]) + '", "last_updated": "' + str(api[0][3]) + '" }'
+
+  return json.loads(x)
   
   
   return render_template('settings.html', ip=ipaddress, byte_sent=convert_size(bytes_sent), byte_recv=convert_size(bytes_recv))

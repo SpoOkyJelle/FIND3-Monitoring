@@ -13,10 +13,10 @@ heat.radius(40, 20);
 heat.gradient({0.4: 'rgb(255, 0, 0)', 0.65: 'rgb(255, 255, 0)', 1: 'rgb(255, 255, 255)'});
 
 // Refresh heatmap every 5 seconds
-Moc();
+receiveData();
 setInterval(function(){
-    Moc();
-}, 5000);
+    receiveData();
+}, 1000);
 
 function Moc(){
     let mocData = [];
@@ -48,17 +48,36 @@ function Moc(){
     heat.clear();
 }
 
+
 // receive data from database/find3 api
-// function receiveData() {
-//     return $.ajax({
-//         url: "http://192.168.21.92/api/v1/by_location/" + familyName + "?history=" + delay,
-//         DataType: "json",
-//         success: function (data) {},
-//         error: function (errorMessage) {
-//             console.log(errorMessage);
-//         }
-//     });
-// }
+function receiveData() {
+    return $.ajax({
+        url: "http://localhost:5000/heatmapapi",
+        DataType: "json",
+        success: function (data) {
+            console.log(data);
+            callBack(data);
+        },
+        error: function (errorMessage) {
+            console.log(errorMessage);
+        }
+    });
+}
+
+function callBack(data){
+    let r1 = Math.floor(Math.random() * 30);
+
+    mocData = [
+        "325", "325", r1
+    ]
+
+    $("#loc-1").text(data.last_updated);
+    
+    heat.data(mocData);
+    heat.draw();
+    heat.clear();
+}
+
 
 // used if API is online
 // function ModifyData(data) {
