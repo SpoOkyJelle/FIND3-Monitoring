@@ -1,23 +1,25 @@
 // locations of the workspaces
-var locations = [
-    ["OIL1", "50", "65"],
-    ["OIL2", "60", "120"],
-    ["OIL3", "160", "60"],
-    ["OIL4", "160", "160"],
-    ["OIL5", "160", "160"]
-];
+// var locations = [
+//     ["OIL1", "50", "65"],
+//     ["OIL2", "60", "120"],
+//     ["OIL3", "160", "60"],
+//     ["OIL4", "160", "160"],
+//     ["OIL5", "160", "160"]
+// ];
+
 
 // create a simpleheat canvas
 var heat = simpleheat('canvas').max(18), frame;
 heat.radius(40, 20);
 heat.gradient({0.4: 'rgb(255, 0, 0)', 0.65: 'rgb(255, 255, 0)', 1: 'rgb(255, 255, 255)'});
 
-// Refresh heatmap every 5 seconds
+// Refresh heatmap every second
 receiveData();
 setInterval(function(){
     receiveData();
 }, 1000);
 
+// moc data
 function Moc(){
     let mocData = [];
 
@@ -48,14 +50,12 @@ function Moc(){
     heat.clear();
 }
 
-
-// receive data from database/find3 api
+// receive data from heatmap database api
 function receiveData() {
     return $.ajax({
         url: "http://localhost:5000/heatmapapi",
         DataType: "json",
         success: function (data) {
-            console.log(data);
             callBack(data);
         },
         error: function (errorMessage) {
@@ -65,15 +65,23 @@ function receiveData() {
 }
 
 function callBack(data){
-    let r1 = Math.floor(Math.random() * 30);
+    let random = Math.floor(Math.random() * 30);
 
-    mocData = [
-        "325", "325", r1
+    // this is where the magic happens
+    imgX = 405;
+    imgY = 391;
+
+    x = imgX / 100 * data.x_coord;
+    y = imgY / 100 * data.y_coord;
+
+    heatData = [
+        [x, y, random]
     ]
 
-    $("#loc-1").text(data.last_updated);
+    $("#number").text(random);
+    $("#last_updated").text(data.last_updated);
     
-    heat.data(mocData);
+    heat.data(heatData);
     heat.draw();
     heat.clear();
 }
