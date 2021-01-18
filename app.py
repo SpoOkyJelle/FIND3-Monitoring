@@ -7,7 +7,6 @@ import psutil
 app = Flask(__name__)
 
 
-
 mysql = MySQL()
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
@@ -48,11 +47,15 @@ def database():
 
     cursor.execute("SELECT * FROM `raspberries`")
     data = cursor.fetchall()
+    
+    cursor.execute("SELECT * FROM `heatmap`")
+    heatmap = cursor.fetchall()
   except:
     print('error with database')
     data='error with database'
   
-  return render_template('database.html', data=data)
+  return render_template('database.html', data=data, heatmap=heatmap)
+
 
 @app.route("/settings")
 def settings():
