@@ -65,6 +65,7 @@ def settings():
   network_stats = psutil.net_io_counters(pernic=True)['Ethernet']
   bytes_sent = getattr(network_stats, 'bytes_sent')
   bytes_recv = getattr(network_stats, 'bytes_recv')
+  return render_template('settings.html', ip=ipaddress, byte_sent=convert_size(bytes_sent), byte_recv=convert_size(bytes_recv))
   
   
 @app.route("/heatmapapi")
@@ -82,7 +83,6 @@ def api():
   return json.loads(x)
   
   
-  return render_template('settings.html', ip=ipaddress, byte_sent=convert_size(bytes_sent), byte_recv=convert_size(bytes_recv))
 
 if __name__ == "__main__":
   app.run(debug=True)
